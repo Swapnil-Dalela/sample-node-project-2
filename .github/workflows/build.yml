@@ -32,14 +32,21 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: stage1-artifact
+          path: ./test-dir
+
+
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
+     - name: Download artifact
+        uses: actions/download-artifact@v3
         with:
-          fetch-depth: 0
+          name: stage1-artifact
 
       # Step 2: Set up Node.js environment
       - name: Setup Node.js
@@ -47,9 +54,6 @@ jobs:
         with:
           node-version: 20 # Specify your Node.js version
 
-      - name: Debug file structure
-        run: ls -la
-         # Step 5: Run tests (if you have tests configured)
       - name: Run tests
         run: npm test --detectOpenHandles
-    
+        working-directory: ./test-dir    
