@@ -41,6 +41,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Step 2: Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20 # Specify your Node.js version
+
       - name: Debug file structure
         run: ls -la
          # Step 5: Run tests (if you have tests configured)
