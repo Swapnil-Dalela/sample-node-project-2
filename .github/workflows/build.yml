@@ -47,6 +47,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: stage1-artifact
+          path: .
 
       # Step 2: Set up Node.js environment
       - name: Setup Node.js
