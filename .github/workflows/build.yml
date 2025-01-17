@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: stage1-artifact
-          path: ./test-dir
+          path: .
 
 
   test:
